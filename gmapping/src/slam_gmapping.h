@@ -92,6 +92,7 @@ class SlamGMapping
 
     ros::Duration map_update_interval_;
     tf::Transform map_to_odom_;
+    tf::Transform odom_to_map_;
     boost::mutex map_to_odom_mutex_;
     boost::mutex map_mutex_;
 
@@ -104,6 +105,8 @@ class SlamGMapping
     std::string laser_frame_;
     std::string map_frame_;
     std::string odom_frame_;
+
+    bool publish_odom_to_map_;
 
     void updateMap(const sensor_msgs::LaserScan& scan);
     bool getOdomPose(GMapping::OrientedPoint& gmap_pose, const ros::Time& t);
